@@ -13,8 +13,6 @@ $ npm install -g illusionist-phrase-maker
 
 2. Execution
 
-## Usage
-
 ```
 $ illusionist-phrase-maker
 ```
@@ -39,7 +37,7 @@ $ illusionist-phrase-maker
 $ npm install -g illusionist-phrase-maker
 ```
 
-## 実行
+2. 実行
 
 ```
 $ illusionist-phrase-maker
