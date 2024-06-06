@@ -71,9 +71,13 @@ export class CLIManager {
     const parts = ["♦…", "変…", "♣…", "換…", "♥…", "中…", "♠"];
     for (const part of parts) {
       process.stdout.write(part);
-      await new Promise((resolve) => setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_CHAR_DELAY));
+      await new Promise((resolve) =>
+        setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_CHAR_DELAY),
+      );
     }
-    await new Promise((resolve) => setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_WAIT_TIME));
+    await new Promise((resolve) =>
+      setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_WAIT_TIME),
+    );
     process.stdout.cursorTo(0);
     process.stdout.clearLine();
   }

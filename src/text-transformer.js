@@ -22,7 +22,10 @@ export class TextTransformer {
       .join("")
       .trim();
 
-    transformedText = this._insertLineBreaks(transformedText, MAGIC_NUMBERS.CHARACTERS_PER_LINE);
+    transformedText = this._insertLineBreaks(
+      transformedText,
+      MAGIC_NUMBERS.CHARACTERS_PER_LINE,
+    );
 
     return transformedText;
   }
