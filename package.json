@@ -1,6 +1,6 @@
 {
   "name": "illusionist-phrase-maker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is an application that converts “。” (Japanese period) in an input sentence into one of “♦/♣/♥/♠” to make the phrase sound like an illusionist from a Japanese manga. *This application is available only in Japanese.",
   "keywords": [
     "illusionist",
