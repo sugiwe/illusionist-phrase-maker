@@ -17,7 +17,7 @@ $ npm install -g illusionist-phrase-maker
 $ illusionist-phrase-maker
 ```
 
-## note
+## Note
 
 - The symbol after conversion is basically one of `♦/♣/♥/♠', but in rare cases another symbol may be displayed
 - If certain strings are mixed in the text, the emoji `(⭐️-_-💧)` will be displayed.
