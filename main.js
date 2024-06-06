@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { CLIManager } from "./src/user-interaction.js";
 
 async function main() {
