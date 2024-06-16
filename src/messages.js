@@ -13,8 +13,9 @@ export const messages = {
   interrupt: `(★-_-★) < あれ、おしまいにするの？また遊んでね♥`,
   noTransform: `あれ、変換する部分がないよ♣
 「。」の入った文章を入れてね♠`,
-  processing: `入力ありがとう♦
+  startProcessing: `入力ありがとう♦
 じゃあ変換するね♣`,
+  underProcessing: ["♦…", "変…", "♣…", "換…", "♥…", "中…", "♠"],
   transformed: `変換できたよ♥`,
   repeat: `もう一度やるかい？それとも終わりにするかい？`,
   goodbye: `(★-_-★) < バイバイ♣また遊んでね♥`,

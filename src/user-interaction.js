@@ -69,9 +69,9 @@ export class CLIManager {
 
   async displayProcessing() {
     console.log(messages.longLine);
-    await this.printTextByChar(messages.processing);
+    await this.printTextByChar(messages.startProcessing);
     console.log(messages.longLine);
-    const parts = ["♦…", "変…", "♣…", "換…", "♥…", "中…", "♠"];
+    const parts = messages.underProcessing;
     for (const part of parts) {
       process.stdout.write(part);
       await new Promise((resolve) =>
