@@ -116,11 +116,11 @@ export class CLIManager {
     const response = await prompt({
       type: "select",
       name: "action",
-      message: "選んでね♦:",
-      choices: ["もう一度やる", "終わる"],
+      message: messages.askRepeat.message,
+      choices: messages.askRepeat.choices,
     });
 
-    if (response.action === "もう一度やる") {
+    if (response.action === messages.askRepeat.choices[0].value) {
       this.inputText = "";
       this.setUpReadlineInterface();
     } else {

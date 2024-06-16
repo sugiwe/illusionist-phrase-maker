@@ -18,4 +18,8 @@ export const messages = {
   transformed: `変換できたよ♥`,
   repeat: `もう一度やるかい？それとも終わりにするかい？`,
   goodbye: `(★-_-★) < バイバイ♣また遊んでね♥`,
+  askRepeat: {
+    message: `選んでね♦`,
+    choices: ["もう一度やる", "終わる"],
+  },
 };
