@@ -2,8 +2,11 @@ import { createInterface } from "readline";
 import { TextTransformer } from "./text-transformer.js";
 import enquirer from "enquirer";
 import { messages } from "./messages.js";
-import { MAGIC_NUMBERS } from "./magic-numbers.js";
 const { prompt } = enquirer;
+
+const PROCESSING_CHAR_DELAY = 500
+const PROCESSING_WAIT_TIME = 2000
+const TEXT_DISPLAY_SPEED = 50
 
 export class CLIManager {
   constructor() {
@@ -72,11 +75,11 @@ export class CLIManager {
     for (const part of parts) {
       process.stdout.write(part);
       await new Promise((resolve) =>
-        setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_CHAR_DELAY),
+        setTimeout(resolve, PROCESSING_CHAR_DELAY),
       );
     }
     await new Promise((resolve) =>
-      setTimeout(resolve, MAGIC_NUMBERS.PROCESSING_WAIT_TIME),
+      setTimeout(resolve, PROCESSING_WAIT_TIME),
     );
     process.stdout.cursorTo(0);
     process.stdout.clearLine();
@@ -91,7 +94,7 @@ export class CLIManager {
     await this.askRepeatOrQuit();
   }
 
-  async printTextByChar(text, delay = MAGIC_NUMBERS.TEXT_DISPLAY_SPEED) {
+  async printTextByChar(text, delay = TEXT_DISPLAY_SPEED) {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {

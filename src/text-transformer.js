@@ -1,4 +1,4 @@
-import { MAGIC_NUMBERS } from "./magic-numbers.js";
+const CHARACTERS_PER_LINE = 40
 
 export class TextTransformer {
   constructor() {
@@ -24,7 +24,7 @@ export class TextTransformer {
 
     transformedText = this._insertLineBreaks(
       transformedText,
-      MAGIC_NUMBERS.CHARACTERS_PER_LINE,
+      CHARACTERS_PER_LINE,
     );
 
     return transformedText;

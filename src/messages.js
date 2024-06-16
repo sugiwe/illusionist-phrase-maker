@@ -1,7 +1,7 @@
-import { MAGIC_NUMBERS } from "./magic-numbers.js";
+const DASHES_PER_LINE = 80
 
 export const messages = {
-  longLine: `-`.repeat(MAGIC_NUMBERS.DASHES_PER_LINE),
+  longLine: `-`.repeat(DASHES_PER_LINE),
   welcome: `(★-_-★) < ようこそ Illusionist Phrase Maker へ♠
 
 キミが入力した文章をボクが言ってるみたいに変換しちゃうよ♥
