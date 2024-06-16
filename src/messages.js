@@ -1,4 +1,4 @@
-const DASHES_PER_LINE = 80
+const DASHES_PER_LINE = 80;
 
 export const messages = {
   longLine: `-`.repeat(DASHES_PER_LINE),

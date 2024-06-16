@@ -1,4 +1,4 @@
-const CHARACTERS_PER_LINE = 40
+const CHARACTERS_PER_LINE = 40;
 
 export class TextTransformer {
   constructor() {

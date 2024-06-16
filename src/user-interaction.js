@@ -4,9 +4,9 @@ import enquirer from "enquirer";
 import { messages } from "./messages.js";
 const { prompt } = enquirer;
 
-const PROCESSING_CHAR_DELAY = 500
-const PROCESSING_WAIT_TIME = 2000
-const TEXT_DISPLAY_SPEED = 50
+const PROCESSING_CHAR_DELAY = 500;
+const PROCESSING_WAIT_TIME = 2000;
+const TEXT_DISPLAY_SPEED = 50;
 
 export class CLIManager {
   constructor() {
@@ -78,9 +78,7 @@ export class CLIManager {
         setTimeout(resolve, PROCESSING_CHAR_DELAY),
       );
     }
-    await new Promise((resolve) =>
-      setTimeout(resolve, PROCESSING_WAIT_TIME),
-    );
+    await new Promise((resolve) => setTimeout(resolve, PROCESSING_WAIT_TIME));
     process.stdout.cursorTo(0);
     process.stdout.clearLine();
   }
