@@ -18,11 +18,11 @@ export class TextTransformer {
     }
     const sentences = inputText.split(/(?<=[。])/g);
     let transformedText = sentences
-      .map((sentence) => this._transformSentence(sentence))
+      .map((sentence) => this.#transformSentence(sentence))
       .join("")
       .trim();
 
-    transformedText = this._insertLineBreaks(
+    transformedText = this.#insertLineBreaks(
       transformedText,
       CHARACTERS_PER_LINE,
     );
@@ -30,7 +30,7 @@ export class TextTransformer {
     return transformedText;
   }
 
-  _transformSentence(sentence) {
+  #transformSentence(sentence) {
     const fakePattern = /フェイク|偽物/;
     const lovePattern = /恋|好き|愛/;
     const funPattern = /楽しい|たのしい/;
@@ -44,10 +44,10 @@ export class TextTransformer {
     if (funPattern.test(sentence)) {
       return sentence.replace(/。$/, "♪");
     }
-    return sentence.replace(/。/g, () => this.randomSymbol());
+    return sentence.replace(/。/g, () => this.#randomSymbol());
   }
 
-  randomSymbol() {
+  #randomSymbol() {
     const rand = Math.random();
     let cumulativeProbability = 0;
     for (let { symbol, probability } of this.symbols) {
@@ -58,7 +58,7 @@ export class TextTransformer {
     }
   }
 
-  _insertLineBreaks(text, lineLength) {
+  #insertLineBreaks(text, lineLength) {
     const lines = text.split("\n");
     const result = [];
 
