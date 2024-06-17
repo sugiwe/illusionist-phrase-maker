@@ -7,7 +7,7 @@ const PROCESSING_CHAR_DELAY = 500;
 const PROCESSING_WAIT_TIME = 2000;
 const TEXT_DISPLAY_SPEED = 50;
 
-export class CLIManager {
+export class IllusionistPhraseMakerCLI {
   constructor() {
     this.textTransformer = new TextTransformer();
     this.inputText = "";

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { CLIManager } from "./src/user-interaction.js";
+import { IllusionistPhraseMakerCLI } from "./src/illusionist-phrase-maker-cli.js";
 
 async function main() {
-  const cliManager = new CLIManager();
-  await cliManager.displayWelcomeMessage();
-  cliManager.promptUserInput();
+  const illusionistPhraseMakerCLI = new IllusionistPhraseMakerCLI();
+  await illusionistPhraseMakerCLI.displayWelcomeMessage();
+  illusionistPhraseMakerCLI.promptUserInput();
 }
 
 main();
