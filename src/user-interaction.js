@@ -2,7 +2,6 @@ import { createInterface } from "readline";
 import { TextTransformer } from "./text-transformer.js";
 import enquirer from "enquirer";
 import { messages } from "./messages.js";
-const { prompt } = enquirer;
 
 const PROCESSING_CHAR_DELAY = 500;
 const PROCESSING_WAIT_TIME = 2000;
@@ -13,6 +12,7 @@ export class CLIManager {
     this.textTransformer = new TextTransformer();
     this.inputText = "";
     this.setUpReadlineInterface();
+    this.prompt = enquirer.prompt;
   }
 
   async displayWelcomeMessage() {
@@ -111,7 +111,7 @@ export class CLIManager {
     console.log(messages.longLine);
     await this.printTextByChar(messages.repeat);
     console.log(messages.longLine);
-    const response = await prompt({
+    const response = await this.prompt({
       type: "select",
       name: "action",
       message: messages.askRepeat.message,
