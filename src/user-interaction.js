@@ -45,7 +45,6 @@ export class CLIManager {
     this.rl.on("close", async () => {
       if (!hasInput || this.inputText.trim() === "") {
         await this.printTextByChar(messages.interrupt);
-        this.rl.close();
         process.exit(0);
       } else {
         const transformedText = this.textTransformer.transformText(
@@ -125,7 +124,6 @@ export class CLIManager {
       console.log(messages.longLine);
       await this.printTextByChar(messages.goodbye);
       console.log(messages.longLine);
-      this.rl.close();
       process.exit(0);
     }
   }
