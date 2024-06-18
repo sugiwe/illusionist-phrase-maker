@@ -99,7 +99,7 @@ export class IllusionistPhraseMakerCLI {
     console.log(messages.longLine);
   }
 
-  async printTextByChar(text, delay = TEXT_DISPLAY_SPEED) {
+  async printTextByChar(text) {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
@@ -110,7 +110,7 @@ export class IllusionistPhraseMakerCLI {
           console.log();
           resolve();
         }
-      }, delay);
+      }, TEXT_DISPLAY_SPEED);
     });
   }
 
