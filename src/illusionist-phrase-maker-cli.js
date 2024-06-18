@@ -59,6 +59,7 @@ export class IllusionistPhraseMakerCLI {
         } else {
           await this.displayProcessing();
           await this.displayTransformedText(transformedText);
+          await this.askRepeatOrQuit();
           this.inputText = "";
           this.promptUserInput();
         }
@@ -88,7 +89,6 @@ export class IllusionistPhraseMakerCLI {
     console.log(messages.longLine);
     console.log(transformedText);
     console.log(messages.longLine);
-    await this.askRepeatOrQuit();
   }
 
   async printTextByChar(text, delay = TEXT_DISPLAY_SPEED) {
