@@ -59,9 +59,17 @@ export class IllusionistPhraseMakerCLI {
         } else {
           await this.displayProcessing();
           await this.displayTransformedText(transformedText);
-          await this.askRepeatOrQuit();
-          this.inputText = "";
-          this.promptUserInput();
+          const choiceRepeat = await this.askRepeatOrQuit();
+          if (choiceRepeat) {
+            this.inputText = "";
+            this.setUpReadlineInterface();
+            this.promptUserInput();
+          } else {
+            console.log(messages.longLine);
+            await this.printTextByChar(messages.goodbye);
+            console.log(messages.longLine);
+            process.exit(0);
+          }
         }
       }
     });
@@ -117,14 +125,6 @@ export class IllusionistPhraseMakerCLI {
       choices: messages.askRepeat.choices,
     });
 
-    if (response.action === messages.askRepeat.choices[0].value) {
-      this.inputText = "";
-      this.setUpReadlineInterface();
-    } else {
-      console.log(messages.longLine);
-      await this.printTextByChar(messages.goodbye);
-      console.log(messages.longLine);
-      process.exit(0);
-    }
+    return response.action === messages.askRepeat.choices[0].value;
   }
 }
