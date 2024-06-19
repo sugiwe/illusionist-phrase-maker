@@ -10,8 +10,6 @@ const TEXT_DISPLAY_SPEED = 50;
 export class IllusionistPhraseMakerCLI {
   constructor() {
     this.textTransformer = new TextTransformer();
-    this.inputText = "";
-    this.setUpReadlineInterface();
     this.prompt = enquirer.prompt;
   }
 
@@ -53,17 +51,13 @@ export class IllusionistPhraseMakerCLI {
         if (transformedText === null) {
           await this.printTextByChar(messages.noTransform);
           console.log(messages.longLine);
-          this.inputText = "";
-          this.setUpReadlineInterface();
-          this.promptUserInput();
+          this.initializeInput();
         } else {
           await this.displayProcessing();
           await this.displayTransformedText(transformedText);
           const choiceRepeat = await this.askRepeatOrQuit();
           if (choiceRepeat) {
-            this.inputText = "";
-            this.setUpReadlineInterface();
-            this.promptUserInput();
+            this.initializeInput();
           } else {
             console.log(messages.longLine);
             await this.printTextByChar(messages.goodbye);
@@ -126,5 +120,11 @@ export class IllusionistPhraseMakerCLI {
     });
 
     return response.action === messages.askRepeat.choices[0].value;
+  }
+
+  initializeInput() {
+    this.inputText = "";
+    this.setUpReadlineInterface();
+    this.promptUserInput();
   }
 }
