@@ -15,23 +15,23 @@ export class IllusionistPhraseMakerCLI {
   initializeInput() {
     this.inputText = "";
     this.#setUpReadlineInterface();
-    this.promptUserInput();
+    this.#promptUserInput();
   }
 
   async displayWelcomeMessage() {
     console.log(messages.longLine);
-    await this.printTextByChar(messages.welcome);
+    await this.#printTextByChar(messages.welcome);
     console.log(messages.longLine);
   }
 
-  async promptUserInput() {
-    await this.printTextByChar(messages.prompt);
+  async #promptUserInput() {
+    await this.#printTextByChar(messages.prompt);
     this.rl.prompt();
   }
 
-  async displayProcessing() {
+  async #displayProcessing() {
     console.log(messages.longLine);
-    await this.printTextByChar(messages.startProcessing);
+    await this.#printTextByChar(messages.startProcessing);
     console.log(messages.longLine);
     const parts = messages.underProcessing;
     for (const part of parts) {
@@ -45,15 +45,15 @@ export class IllusionistPhraseMakerCLI {
     process.stdout.clearLine();
   }
 
-  async displayTransformedText(transformedText) {
+  async #displayTransformedText(transformedText) {
     console.log(messages.longLine);
-    await this.printTextByChar(messages.transformed);
+    await this.#printTextByChar(messages.transformed);
     console.log(messages.longLine);
     console.log(transformedText);
     console.log(messages.longLine);
   }
 
-  async printTextByChar(text) {
+  async #printTextByChar(text) {
     return new Promise((resolve) => {
       let index = 0;
       const interval = setInterval(() => {
@@ -68,9 +68,9 @@ export class IllusionistPhraseMakerCLI {
     });
   }
 
-  async askRepeatOrQuit() {
+  async #askRepeatOrQuit() {
     console.log(messages.longLine);
-    await this.printTextByChar(messages.repeat);
+    await this.#printTextByChar(messages.repeat);
     console.log(messages.longLine);
     const response = await enquirer.prompt({
       type: "select",
@@ -100,25 +100,25 @@ export class IllusionistPhraseMakerCLI {
 
     this.rl.on("close", async () => {
       if (!hasInput || this.inputText.trim() === "") {
-        await this.printTextByChar(messages.interrupt);
+        await this.#printTextByChar(messages.interrupt);
         process.exit(0);
       } else {
         const transformedText = this.textTransformer.transformText(
           this.inputText,
         );
         if (transformedText === null) {
-          await this.printTextByChar(messages.noTransform);
+          await this.#printTextByChar(messages.noTransform);
           console.log(messages.longLine);
           this.initializeInput();
         } else {
-          await this.displayProcessing();
-          await this.displayTransformedText(transformedText);
-          const choiceRepeat = await this.askRepeatOrQuit();
+          await this.#displayProcessing();
+          await this.#displayTransformedText(transformedText);
+          const choiceRepeat = await this.#askRepeatOrQuit();
           if (choiceRepeat) {
             this.initializeInput();
           } else {
             console.log(messages.longLine);
-            await this.printTextByChar(messages.goodbye);
+            await this.#printTextByChar(messages.goodbye);
             console.log(messages.longLine);
             process.exit(0);
           }
