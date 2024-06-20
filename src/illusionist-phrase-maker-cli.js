@@ -12,6 +12,12 @@ export class IllusionistPhraseMakerCLI {
     this.textTransformer = new TextTransformer();
   }
 
+  initializeInput() {
+    this.inputText = "";
+    this.#setUpReadlineInterface();
+    this.promptUserInput();
+  }
+
   async displayWelcomeMessage() {
     console.log(messages.longLine);
     await this.printTextByChar(messages.welcome);
@@ -21,51 +27,6 @@ export class IllusionistPhraseMakerCLI {
   async promptUserInput() {
     await this.printTextByChar(messages.prompt);
     this.rl.prompt();
-  }
-
-  #setUpReadlineInterface() {
-    if (this.rl) {
-      this.rl.close();
-    }
-    this.rl = createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-
-    let hasInput = false;
-
-    this.rl.on("line", (line) => {
-      this.inputText += line + "\n";
-      hasInput = true;
-    });
-
-    this.rl.on("close", async () => {
-      if (!hasInput || this.inputText.trim() === "") {
-        await this.printTextByChar(messages.interrupt);
-        process.exit(0);
-      } else {
-        const transformedText = this.textTransformer.transformText(
-          this.inputText,
-        );
-        if (transformedText === null) {
-          await this.printTextByChar(messages.noTransform);
-          console.log(messages.longLine);
-          this.initializeInput();
-        } else {
-          await this.displayProcessing();
-          await this.displayTransformedText(transformedText);
-          const choiceRepeat = await this.askRepeatOrQuit();
-          if (choiceRepeat) {
-            this.initializeInput();
-          } else {
-            console.log(messages.longLine);
-            await this.printTextByChar(messages.goodbye);
-            console.log(messages.longLine);
-            process.exit(0);
-          }
-        }
-      }
-    });
   }
 
   async displayProcessing() {
@@ -121,9 +82,48 @@ export class IllusionistPhraseMakerCLI {
     return response.action === messages.askRepeat.choices[0].value;
   }
 
-  initializeInput() {
-    this.inputText = "";
-    this.#setUpReadlineInterface();
-    this.promptUserInput();
+  #setUpReadlineInterface() {
+    if (this.rl) {
+      this.rl.close();
+    }
+    this.rl = createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    let hasInput = false;
+
+    this.rl.on("line", (line) => {
+      this.inputText += line + "\n";
+      hasInput = true;
+    });
+
+    this.rl.on("close", async () => {
+      if (!hasInput || this.inputText.trim() === "") {
+        await this.printTextByChar(messages.interrupt);
+        process.exit(0);
+      } else {
+        const transformedText = this.textTransformer.transformText(
+          this.inputText,
+        );
+        if (transformedText === null) {
+          await this.printTextByChar(messages.noTransform);
+          console.log(messages.longLine);
+          this.initializeInput();
+        } else {
+          await this.displayProcessing();
+          await this.displayTransformedText(transformedText);
+          const choiceRepeat = await this.askRepeatOrQuit();
+          if (choiceRepeat) {
+            this.initializeInput();
+          } else {
+            console.log(messages.longLine);
+            await this.printTextByChar(messages.goodbye);
+            console.log(messages.longLine);
+            process.exit(0);
+          }
+        }
+      }
+    });
   }
 }
