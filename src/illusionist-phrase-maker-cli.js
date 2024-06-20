@@ -23,7 +23,7 @@ export class IllusionistPhraseMakerCLI {
     this.rl.prompt();
   }
 
-  setUpReadlineInterface() {
+  #setUpReadlineInterface() {
     if (this.rl) {
       this.rl.close();
     }
@@ -123,7 +123,7 @@ export class IllusionistPhraseMakerCLI {
 
   initializeInput() {
     this.inputText = "";
-    this.setUpReadlineInterface();
+    this.#setUpReadlineInterface();
     this.promptUserInput();
   }
 }
