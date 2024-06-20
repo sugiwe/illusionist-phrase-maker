@@ -10,7 +10,6 @@ const TEXT_DISPLAY_SPEED = 50;
 export class IllusionistPhraseMakerCLI {
   constructor() {
     this.textTransformer = new TextTransformer();
-    this.prompt = enquirer.prompt;
   }
 
   async displayWelcomeMessage() {
@@ -112,7 +111,7 @@ export class IllusionistPhraseMakerCLI {
     console.log(messages.longLine);
     await this.printTextByChar(messages.repeat);
     console.log(messages.longLine);
-    const response = await this.prompt({
+    const response = await enquirer.prompt({
       type: "select",
       name: "action",
       message: messages.askRepeat.message,
