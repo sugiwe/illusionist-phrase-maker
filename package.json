@@ -1,0 +1,38 @@
+{
+  "name": "illusionist-phrase-maker",
+  "version": "1.0.0",
+  "description": "This is an application that converts “。” (Japanese period) in an input sentence into one of “♦/♣/♥/♠” to make the phrase sound like an illusionist from a Japanese manga. *This application is available only in Japanese.",
+  "keywords": [
+    "illusionist",
+    "HUNTER×HUNTER"
+  ],
+  "homepage": "https://github.com/sugiwe/illusionist-phrase-maker#readme",
+  "bugs": {
+    "url": "https://github.com/sugiwe/illusionist-phrase-maker/issues"
+  },
+  "license": "MIT",
+  "author": "sugiwe",
+  "type": "module",
+  "main": "main.js",
+  "bin": {
+    "illusionist-phrase-maker": "./main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sugiwe/illusionist-phrase-maker.git"
+  },
+  "scripts": {
+    "fix": "prettier --write . && eslint --fix .",
+    "lint": "prettier --check . && eslint ."
+  },
+  "dependencies": {
+    "enquirer": "^2.4.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.3.0",
+    "prettier": "^3.2.5"
+  }
+}
